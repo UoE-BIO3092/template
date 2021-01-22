@@ -1,83 +1,85 @@
 ---
 layout: page
-title: Openstack
+title: Walkthrough
 order: 1
 ---
-# Using OpenStack
+# Intro
 
-To complete this workshop we will be using a BIO3092-2020 instance on the University of Exeter's OpenStack. If you have already created an instance as part of another BIO3092 workshop you should log into that instance now and  move onto the workshop [introduction](https://uoe-bio3092.github.io/rna-seq/02_introduction.html). If for any reason you have not created an instance or need to create another see the instructions below.
+This is an information page within the template. The .md file has a header that specifies the page type, title and order that it should appear in the table of contents. You can add as many pages as you like and update the header information in each one. This will create an accurate table of contents on the main page and allow navigation.
 
-## Creating an instance on Openstack
+The information below will go through all the steps necessary to build a GitHub pages site. These pages also serve as a simple template to construct a workshop site.
 
-A video tutorial to connect to OpenStack and launching an instance is [here](https://youtu.be/JIoFJBWTtlg)
+## Create a new repository on GitHub
 
-### Log on details
+First we create a new repository on GitHub. On the organisation page of the BIO3092 GitHub site click the green 'New' button in the top right corner.
 
-To log into [OpenStack](https://openstack.exeter.ac.uk/dashboard/auth/login/?next=/dashboard/) you will need the following credentials. Please note that you will not be able to access OpenStack or your instance from off campus. If you need off campus access you will need to use a [VPN](http://www.exeter.ac.uk/it/howdoi/vpn/).
+![New repository](/images/new_repository.png)
 
-* Domain: default
-* User name: hubtraining_student
-* Password: yTpEMUJsfD7z
+Enter some information about the name and description of your workshop and set the visibility to public. Finally click 'Create repository'.
+
+![Repo details](/images/repo_details.png)
+
+A more detailed guide to setup a new repository on GitHub can be found [here](https://docs.github.com/en/github/getting-started-with-github/create-a-repo)
+
+## Creating a new gh-pages branch
+
+Next, create a new branch in the repository to store our pages site. On the main page of your repository click the branch selector button and enter the name of your new branch i.e. 'gh-pages'. Then click the 'Create branch gh-pages from main' button.
+
+![New branch](/images/new_branch.png)
 
 
-### Openstack instance
+A more detailed guide to setup a new branch within your repository can be found [here](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-and-deleting-branches-within-your-repository)
 
-To successfully create an instance you will need to select the following options. Please name your instance something that you will remember - including your name or university ID is a good idea. Then follow the instructions using the following options:
+## Clone your repository
 
-* Boot source: _Instance Snapshot_
-* Name: BIO3092-2020
-* Flavour: _u1.xxlarge_
+Now clone your repository to your local machine so that you can add files and write your workshop. You can find the URL for your repository by clicking the green 'code' button in the top right hand side of your repository.
 
-Once the instance has started remember to take note of the IP address (use Edit-Copy).
+![Clone](/images/clone_url.png)
 
-## Log onto your instance
-
-A video tutorial to connect to your virtual machine using Terminal (mac) or MobaXterm (windows) is [here](https://youtu.be/qPPBjTSppvE)
-
-The log in details are:
-* User name: ubuntu
-* Password: bio3092
-
-Once you have successfully logged on, its time to begin the workshop!
-
-# Using your own machine
-
-It is strongly recommended that you use the Virtual Machine approach to complete this workshop described above. However, it will also be possible to use your own machine.
-
-To successfully use your own machine you will need to:
-* Download the workshop data
-* Install all required software
-
-Please ensure all data is downloaded and software is installed and working before our workshop session.
-
-## Downloading workshop data
-
-A substantial amount of raw data is required (a few GB) for this workshop. The easiest way to download these data is from the virtual machine. Follow the instructions above to setup an instance of the BIO3092-2020 virtual machine. Once you have started an instance and have an IP address use `scp` (or another transfer program) to download the data to your local machine. The data is stored at `/home/ubuntu/resources/workshops/ws4-differential-expression/` on the virtual machine. An example command (Linux or Mac Terminal) to download these data would be:
+On your local machine navigate to the directory where you want to store the repository and enter the command:
 
 ```
-scp -r ubuntu@<ip-address>:/home/ubuntu/resources/workshops/ws4-differential-expression ./
+git clone <url>
 ```
 
-enter the relevant password when prompted and the command will download the workshop data to the current directory on your local machine. This directory will then become your working directory for the workshop.
+![Git clone](/images/git_clone.png)
 
-The command should result in a directory structure that looks like:
+Some information should be printed to the screen and a new directory will be created containing your repository. For more information on this process see [this page](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository). Note that you will have to have an ssh key and this needs to be associated to you Git account. See [here](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for details.
 
-* ws4-differential-expression/
-  * fastq/
-  * alignments/
-  * DE/
-  * GO/
-  * C.gattii_ref/
+## Change to the gh-pages branch
 
-with the `fastq/`, `alignments/` and `C.gattii_ref/` directories containing some input files you will use throughout the workshop.
+Before we can start adding material we need to switch to the 'gh-pages' branch so that all the files we add go to the correct place in our repository. We do this with the command:
 
-## Required software
+```
+git checkout gh-pages
+```
 
-We will run the whole workshop in [R](https://www.r-project.org/). I recommend using an Integrated Development Environment (IDE) such as [RStudio](https://rstudio.com/), which has a lot of useful features such as package installation, script editor and panes for visualisation of the environment and images.
+![Git checkout](/images/git_checkout.png)
 
-To complete the workshop you will need to install several packages:
-* [Rsubread](https://bioconductor.org/packages/release/bioc/html/Rsubread.html) for alignment and counting
-* [edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html) for differential gene expression analysis
-* [GOfuncR](https://www.bioconductor.org/packages/release/bioc/html/GOfuncR.html) for Gene Ontology enrichment
+## Add files and create the workshop
 
-Follow the instructions on the above pages to install the packages.
+You can now add files to this directory and write your workshop materials. To create a workshop page in line with the BIO3092 RNA-Seq pages you can download the files from the template repository (they can be downloaded as a zip file directory from GitHub), import them into your repository directory and make any changes necessary.
+
+I work in an IDE ([Atom](https://atom.io/)) that comes with built in functionality for working with projects stored on GitHub. It means all the commands for pushing to the server can be handled from an intuitive GUI. You can see in the following screenshot the files I have added for the template repository (left) and that Atom will keep track of changes in a Git tab (right).
+
+![Atom](/images/atom.png)
+
+In fact many of the operations (cloning, checkout and switching branches) can be handled from the Atom GUI.
+
+## Pushing the workshop to the server
+
+Once the workshop has been written, it is time to 'push' our changes to the repository. This process is done in three stages on the command line.
+
+* First, we use `git add` to [add](https://github.com/git-guides/git-add) files to our commit
+* Then, we use `git commit -m` with a message to create a [snapshot](https://github.com/git-guides/git-commit) of the repository ready for upload.
+* Finally, we use `git push` to update the [remote branch](https://github.com/git-guides/git-push) with our commit.
+
+This can all be handled on the command line from within the repository directory. Or through a GUI interface in an IDE such as Atom.
+
+![Atom push](/images/gui_push.png)
+
+In the above screenshot you can see on the right hand side I have staged files (add) for upload and have entered a message for the commit. The next step is to press commit to 'gh-pages' and use the 'push' button (appears at the bottom after committing) to upload changes to the server.
+
+## Publish the branch as a GitHub pages site
+
+We have now almost finished the setup. Once the workshop files have been uploaded to the server we need to publish the repository as a GitHub pages site.
