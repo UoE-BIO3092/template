@@ -80,7 +80,7 @@ to
 baseurl: /<your-repo>
 ```
 
-![config](config_upfate.png)
+![config](config_update.png)
 
 This just sets the base URL for your GitHub pages to the correct repository.
 
@@ -110,6 +110,6 @@ Click the 'settings' button in the top right and scroll down to the GitHub pages
 
 Once the GitHub pages site has been published the URL will appear in this section. Visiting the page should show something similar to:
 
-![Landing page](Landing_page.png)
+![Landing page](landing_page.png)
 
 Now when you make further changes to the workshop just 'push' the changes to the server and after a few minutes those changes will be reflected in the pages online.
