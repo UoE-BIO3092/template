@@ -66,6 +66,24 @@ I work in an IDE ([Atom](https://atom.io/)) that comes with built in functionali
 
 In fact many of the operations (cloning, checkout and switching branches) can be handled from the Atom GUI.
 
+## Update the config file
+
+In the template files there is a config file (\_config.yml). There is one small change that will need to be made in this file. Change the line:
+
+```
+baseurl: /template
+```
+
+to
+
+```
+baseurl: /<your-repo>
+```
+
+![config](config_upfate.png)
+
+This just sets the base URL for your GitHub pages to the correct repository.
+
 ## Pushing the workshop to the server
 
 Once the workshop has been written, it is time to 'push' our changes to the repository. This process is done in three stages on the command line.
@@ -82,4 +100,16 @@ In the above screenshot you can see on the right hand side I have staged files (
 
 ## Publish the branch as a GitHub pages site
 
-We have now almost finished the setup. Once the workshop files have been uploaded to the server we need to publish the repository as a GitHub pages site.
+We have now almost finished the setup. Once the workshop files have been uploaded to the server we need to publish the repository as a GitHub pages site. If you now view your repository on GitHub, you should be able to see your added files.
+
+![Updated repo](/images/uploaded_repo.png)
+
+Click the 'settings' button in the top right and scroll down to the GitHub pages section. Update the settings to publish the repo as a GitHub pages site. If you have used this template repository to create your workshop these settings should already be complete.
+
+![Settings](/images/settings.png)
+
+Once the GitHub pages site has been published the URL will appear in this section. Visiting the page should show something similar to:
+
+![Landing page](Landing_page.png)
+
+Now when you make further changes to the workshop just 'push' the changes to the server and after a few minutes those changes will be reflected in the pages online.
